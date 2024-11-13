@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Wedding Invitation - Dharmik & Kajal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.0/aframe.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.js"></script>
+</head>
+<body>
+    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
+        <!-- Background Environment -->
+        <a-sky color="#FFFFFF"></a-sky>
+        
+        <!-- Main Invitation Card -->
+        <a-entity position="0 0 -2">
+            <!-- Frame -->
+            <a-box width="2" height="3" depth="0.05" color="#2B3B63"></a-box>
+            
+            <!-- Text Content -->
+            <a-text 
+                value="YOU ARE INVITED TO\nOUR WEDDING"
+                position="-0.8 1 0.1"
+                color="#000000"
+                width="3"
+                align="center">
+            </a-text>
+            
+            <a-text 
+                value="Dharmik\nKajal"
+                position="-0.4 0.5 0.1"
+                color="#2B3B63"
+                width="4"
+                align="center">
+            </a-text>
+            
+            <a-text 
+                value="SATURDAY\n27.11.2025\nAT 10:00AM"
+                position="-0.6 -0.5 0.1"
+                color="#FFFFFF"
+                width="3"
+                align="center">
+            </a-text>
+            
+            <!-- Decorative Elements -->
+            <a-entity position="-1 1.4 0.1">
+                <a-sphere radius="0.1" color="#88A0BC"></a-sphere>
+            </a-entity>
+            <a-entity position="1 1.4 0.1">
+                <a-sphere radius="0.1" color="#88A0BC"></a-sphere>
+            </a-entity>
+        </a-entity>
+        
+        <!-- Camera -->
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+</html>
