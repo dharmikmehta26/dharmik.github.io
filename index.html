@@ -1,54 +1,103 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>3D Wedding Invitation - Dharmik & Kajal</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.0/aframe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ar.js/2.2.2/aframe-ar.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dharmik & Kajal's Wedding Invitation</title>
+    <!-- AR.js and A-Frame -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aframe/1.4.2/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <style>
+        .arjs-loader {
+            position: fixed;
+            z-index: 999;
+            overflow: show;
+            margin: auto;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .arjs-loader div {
+            text-align: center;
+            font-size: 1.25em;
+            padding: 20px;
+        }
+    </style>
 </head>
-<body>
-    <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <!-- Background Environment -->
-        <a-sky color="#FFFFFF"></a-sky>
-        
-        <!-- Main Invitation Card -->
-        <a-entity position="0 0 -2">
-            <!-- Frame -->
-            <a-box width="2" height="3" depth="0.05" color="#2B3B63"></a-box>
-            
-            <!-- Text Content -->
-            <a-text 
-                value="YOU ARE INVITED TO\nOUR WEDDING"
-                position="-0.8 1 0.1"
-                color="#000000"
-                width="3"
-                align="center">
-            </a-text>
-            
-            <a-text 
-                value="Dharmik\nKajal"
-                position="-0.4 0.5 0.1"
-                color="#2B3B63"
-                width="4"
-                align="center">
-            </a-text>
-            
-            <a-text 
-                value="SATURDAY\n27.11.2025\nAT 10:00AM"
-                position="-0.6 -0.5 0.1"
-                color="#FFFFFF"
-                width="3"
-                align="center">
-            </a-text>
-            
-            <!-- Decorative Elements -->
-            <a-entity position="-1 1.4 0.1">
-                <a-sphere radius="0.1" color="#88A0BC"></a-sphere>
+<body style="margin: 0; overflow: hidden;">
+    <!-- Loading Screen -->
+    <div class="arjs-loader">
+        <div>
+            Loading Wedding Invitation...
+            <br>Please allow camera access when prompted
+        </div>
+    </div>
+
+    <!-- AR Scene -->
+    <a-scene
+        embedded
+        arjs="sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix;"
+        renderer="logarithmicDepthBuffer: true;"
+        vr-mode-ui="enabled: false">
+
+        <!-- Custom marker pattern -->
+        <a-marker preset="hiro">
+            <!-- Wedding Card Container -->
+            <a-entity position="0 0.5 0">
+                <!-- Background Card -->
+                <a-plane 
+                    width="2" 
+                    height="3" 
+                    color="#FFFFFF" 
+                    material="transparent: true; opacity: 0.9">
+                </a-plane>
+
+                <!-- Header Text -->
+                <a-text 
+                    value="YOU ARE INVITED TO\nOUR WEDDING" 
+                    position="0 1.2 0.01" 
+                    align="center" 
+                    color="#000000" 
+                    scale="0.5 0.5 1">
+                </a-text>
+
+                <!-- Names -->
+                <a-text 
+                    value="Dharmik\n&\nKajal" 
+                    position="0 0.5 0.01" 
+                    align="center" 
+                    color="#2B3B63" 
+                    scale="0.8 0.8 1">
+                </a-text>
+
+                <!-- Date and Time -->
+                <a-text 
+                    value="SATURDAY\n27.11.2025\n10:00 AM" 
+                    position="0 -0.3 0.01" 
+                    align="center" 
+                    color="#2B3B63" 
+                    scale="0.5 0.5 1">
+                </a-text>
+
+                <!-- Decorative Elements -->
+                <a-entity position="-0.8 1.2 0.01">
+                    <a-circle radius="0.1" color="#88A0BC"></a-circle>
+                </a-entity>
+                <a-entity position="0.8 1.2 0.01">
+                    <a-circle radius="0.1" color="#88A0BC"></a-circle>
+                </a-entity>
             </a-entity>
-            <a-entity position="1 1.4 0.1">
-                <a-sphere radius="0.1" color="#88A0BC"></a-sphere>
-            </a-entity>
-        </a-entity>
-        
+        </a-marker>
+
         <!-- Camera -->
         <a-entity camera></a-entity>
     </a-scene>
